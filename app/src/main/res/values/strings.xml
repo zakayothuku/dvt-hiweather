@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HiWeather</string>
+    <string name="today_weather">How is the weather like today</string>
+    <string name="today_min">min</string>
+    <string name="today_current">current</string>
+    <string name="today_max">max</string>
+    <string name="empty">--</string>
+    <string name="current_temperature">%1$s &#176;</string>
+    <string name="location_permissions">Allow location permission</string>
+    <string name="location_permissions_description">HiWeather requires access to your location to work.</string>
+    <string name="action_accept">Allow</string>
+    <string name="action_decline">Deny</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+~ Copyright (C) 2019 The Android Open Source Project
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+
+<resources>
+
+    <color name="color_primary">#666666</color>
+    <color name="color_primary_variant">#00666666</color>
+    <color name="color_secondary">#666666</color>
+    <color name="color_accent">#318b1b</color>
+
+    <color name="color_sunny">#368B1C</color>
+    <color name="color_cloudy">#4E6871</color>
+    <color name="color_rainy">#3D3D3E</color>
+
+    <color name="color_background">#151923</color>
+    <color name="color_surface">#151923</color>
+    <color name="color_dialog_background">#39393e</color>
+
+    <color name="color_success">#1EB980</color>
+    <color name="color_error">#CF6679</color>
+
+    <color name="color_on_primary">#121212</color>
+    <color name="color_on_secondary">#FFFFFF</color>
+    <color name="color_on_background">#FFFFFF</color>
+    <color name="color_on_surface">#FFFFFF</color>
+    <color name="color_on_error">#000000</color>
+
+    <color name="color_common_dark_grey">#33CACBD3</color>
+    <color name="color_common_light_grey">#12FFFFFF</color>
+    <color name="color_common_primary">#151923</color>
+    <color name="color_common_background_grey">#12FFFFFF</color>
+    <color name="color_common_background_grey_variant">#06FFFFFF</color>
+
+</resources>

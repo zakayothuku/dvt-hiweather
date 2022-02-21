@@ -1,0 +1,67 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Components-->
+    <style name="Widget.HiWeatherTheme.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.HiWeatherTheme.Toolbar</item>
+        <item name="titleTextAppearance">@style/TextAppearance.HiWeatherTheme.Headline6</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.HiWeatherTheme.Subtitle1</item>
+    </style>
+
+    <style name="ThemeOverlay.HiWeatherTheme.Toolbar" parent="">
+        <item name="colorPrimary">@color/color_background</item>
+        <item name="colorPrimaryVariant">@color/color_background</item>
+        <item name="colorOnPrimary">@color/color_on_background</item>
+    </style>
+
+    <!--Bottom Sheets-->
+    <style name="ThemeOverlay.HiWeatherTheme.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/Animation.HiWeatherTheme.BottomSheet.Modal</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/Widget.HiWeatherTheme.BottomSheet.Modal</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">
+            @android:color/transparent
+        </item>
+    </style>
+
+    <style name="Widget.HiWeatherTheme.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceBottomSheetDialog.Rounded</item>
+        <item name="behavior_peekHeight">600dp</item>
+    </style>
+
+    <style name="ShapeAppearanceBottomSheetDialog.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <!--Navigation Drawer-->
+    <style name="Widget.HiWeatherTheme.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+        <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+    <!-- Snackbar -->
+    <style name="Widget.HiWeatherTheme.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.HiWeatherTheme.Snackbar</item>
+        <item name="actionTextColorAlpha">1</item>
+    </style>
+
+    <style name="Widget.HiWeatherTheme.SnackbarButton" parent="Widget.MaterialComponents.Button.TextButton.Snackbar">
+        <item name="android:textColor">@color/color_accent</item>
+    </style>
+
+    <style name="ThemeOverlay.HiWeatherTheme.Snackbar" parent="">
+        <item name="backgroundTint">@color/color_primary</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnSurface">@color/color_on_primary</item>
+    </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/text_size_caption</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+</resources>

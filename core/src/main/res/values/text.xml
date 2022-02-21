@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.HiWeatherTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.HiWeatherTheme.TextInputLayout</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.HiWeatherTheme.MediumComponent</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="hintTextAppearance">@style/HintText</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+
+    <style name="ThemeOverlay.HiWeatherTheme.TextInputLayout" parent="">
+        <item name="colorPrimary">?attr/colorOnSurface</item>
+        <item name="colorOnSurface">@color/color_on_background</item>
+        <item name="colorError">@color/color_error</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.HiWeatherTheme.Subtitle1</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.HiWeatherTheme.Caption</item>
+        <item name="editTextStyle">@style/ThemeOverlay.HiWeatherTheme.TextInputEditText</item>
+    </style>
+
+    <style name="ThemeOverlay.HiWeatherTheme.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:textSize">@dimen/text_size_body2</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="hintTextAppearance">@style/HintText</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+
+    <style name="HintText" parent="Theme.MaterialComponents">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">@dimen/text_size_body2</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+</resources>

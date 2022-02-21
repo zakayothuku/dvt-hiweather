@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="HiWeatherTheme" parent="@style/Base.HiWeatherTheme" />
+
+    <style name="Splash.HiWeatherTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/color_primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/HiWeatherTheme</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">?colorPrimaryVariant</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/color_background</item>
+    </style>
+
+    <style name="Base.HiWeatherTheme" parent="Base.MaterialThemeBuilder">
+
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorAccent">@color/color_accent</item>
+
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorError">@color/color_error</item>
+
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+        <item name="colorOnBackground">@color/color_on_background</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
+        <item name="colorOnError">@color/color_on_error</item>
+
+        <item name="textAppearanceHeadline1">@style/TextAppearance.HiWeatherTheme.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.HiWeatherTheme.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.HiWeatherTheme.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.HiWeatherTheme.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.HiWeatherTheme.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.HiWeatherTheme.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.HiWeatherTheme.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.HiWeatherTheme.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.HiWeatherTheme.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.HiWeatherTheme.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.HiWeatherTheme.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.HiWeatherTheme.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.HiWeatherTheme.Overline</item>
+
+        <item name="shapeAppearanceSmallComponent">
+            @style/ShapeAppearance.HiWeatherTheme.SmallComponent
+        </item>
+        <item name="shapeAppearanceMediumComponent">
+            @style/ShapeAppearance.HiWeatherTheme.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">
+            @style/ShapeAppearance.HiWeatherTheme.LargeComponent
+        </item>
+
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.Dialog.Alert
+        </item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.HiWeatherTheme.BottomSheetDialog
+        </item>
+        <item name="navigationViewStyle">@style/Widget.HiWeatherTheme.NavigationView</item>
+        <item name="toolbarStyle">@style/Widget.HiWeatherTheme.Toolbar</item>
+        <item name="snackbarStyle">@style/Widget.HiWeatherTheme.Snackbar</item>
+        <item name="snackbarButtonStyle">@style/Widget.HiWeatherTheme.SnackbarButton</item>
+        <item name="textInputStyle">@style/Widget.HiWeatherTheme.TextInputLayout</item>
+    </style>
+
+    <style name="Base.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="alphaEmphasisHigh">@dimen/alpha_emphasis_high</item>
+        <item name="alphaEmphasisMedium">@dimen/alpha_emphasis_medium</item>
+        <item name="alphaEmphasisDisabled">@dimen/alpha_emphasis_disabled</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">#000000</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">#000000</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
+
+        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
+        <item name="colorAccent">?colorSecondary</item>
+    </style>
+
+    <style name="TatuaTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
+
+    <style name="TatuaTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

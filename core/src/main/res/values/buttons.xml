@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">?textAppearanceButton</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">@dimen/zero</item>
+        <item name="android:insetBottom">@dimen/zero</item>
+    </style>
+
+    <style name="Base.Button.Icon" parent="Widget.MaterialComponents.Button.Icon">
+        <item name="android:textAppearance">?textAppearanceButton</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="iconSize">@dimen/keyline_5</item>
+        <item name="iconTint">@null</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">@dimen/zero</item>
+        <item name="android:insetBottom">@dimen/zero</item>
+    </style>
+
+    <style name="Base.Button.Outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textAppearance">?textAppearanceButton</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">@dimen/zero</item>
+        <item name="android:insetBottom">@dimen/zero</item>
+    </style>
+
+    <style name="Base.Button.Clear" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAppearance">?textAppearanceButton</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">@dimen/zero</item>
+        <item name="android:insetBottom">@dimen/zero</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Base.Button">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="backgroundTint">@drawable/button_color_state</item>
+    </style>
+
+    <style name="PrimaryButton.Icon" parent="Base.Button.Icon">
+        <item name="iconTint">@color/color_surface</item>
+        <item name="iconSize">@dimen/keyline_4</item>
+        <item name="iconGravity">end</item>
+    </style>
+
+    <style name="PrimaryButton.Clear" parent="Base.Button.Clear" />
+
+    <style name="PrimaryButton.Small">
+        <item name="android:minWidth">@dimen/small_button_width</item>
+        <item name="android:layout_height">@dimen/small_button_height</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+    </style>
+
+    <style name="PrimaryButton.Outline" parent="Base.Button.Outline">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="strokeColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="PrimaryButton.Outline.Small">
+        <item name="android:minWidth">@dimen/small_button_width</item>
+        <item name="android:layout_height">@dimen/small_button_height</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+    </style>
+
+    <style name="SecondaryButton" parent="Base.Button">
+        <item name="backgroundTint">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorSurface</item>
+    </style>
+
+    <style name="SecondaryButton.White" parent="Base.Button">
+        <item name="backgroundTint">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="SecondaryButton.Red">
+        <item name="backgroundTint">?attr/colorError</item>
+        <item name="android:textColor">?attr/colorSurface</item>
+    </style>
+
+    <style name="SecondaryButton.Small">
+        <item name="android:minWidth">@dimen/small_button_width</item>
+        <item name="android:layout_height">@dimen/small_button_height</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+    </style>
+
+    <style name="SecondaryButton.Icon" parent="Base.Button.Icon">
+        <item name="backgroundTint">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorSurface</item>
+    </style>
+
+    <style name="SecondaryButton.Icon.White">
+        <item name="backgroundTint">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="SecondaryButton.Icon.Red">
+        <item name="backgroundTint">?attr/colorError</item>
+        <item name="android:textColor">?attr/colorSurface</item>
+    </style>
+
+    <style name="SecondaryButton.Outline" parent="Base.Button.Outline">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="SecondaryButton.Outline.Small">
+        <item name="android:minWidth">@dimen/small_button_width</item>
+        <item name="android:layout_height">@dimen/small_button_height</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+    </style>
+
+    <style name="SecondaryButton.Outline.White">
+        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="strokeColor">?attr/colorSurface</item>
+    </style>
+
+    <style name="SecondaryButton.Outline.Red">
+        <item name="backgroundTint">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorError</item>
+        <item name="strokeColor">?attr/colorError</item>
+    </style>
+
+    <style name="SecondaryButton.Clear" parent="Base.Button.Clear" />
+
+    <style name="SecondaryButton.Clear.Small">
+        <item name="android:minWidth">@dimen/small_button_width</item>
+        <item name="android:layout_height">@dimen/small_button_height</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+    </style>
+
+    <style name="SecondaryButton.Clear.Red">
+        <item name="android:textColor">?attr/colorError</item>
+    </style>
+
+    <style name="IconButton" parent="Base.Button.Clear">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="iconPadding">@dimen/zero</item>
+        <item name="android:insetTop">@dimen/zero</item>
+        <item name="android:insetBottom">@dimen/zero</item>
+        <item name="android:paddingLeft">@dimen/margin_padding_size_small</item>
+        <item name="android:paddingRight">@dimen/margin_padding_size_small</item>
+        <item name="android:minWidth">@dimen/standard_touch_size</item>
+        <item name="android:minHeight">@dimen/standard_touch_size</item>
+    </style>
+</resources>
