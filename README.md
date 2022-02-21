@@ -32,6 +32,7 @@ To maintain the style and quality of the code, are used the bellow static analys
 | [spotless](https://github.com/diffplug/spotless) | [/spotless](https://github.com/nuhkoca/kotlin-modular-tdd-coroutines-mvvm/tree/master/spotless) | `./gradlew spotlessCheck` | `./gradlew spotlessApply`
 | [lint](https://developer.android.com/studio/write/lint) | [each module](https://github.com/nuhkoca/kotlin-modular-tdd-coroutines-mvvm/blob/master/app/lint.xml) | `./gradlew lint` | - |
 
+
 ## Setup & Installation
 Clone the repository.
 
@@ -42,10 +43,11 @@ Add the API and Base Url for [Open Weather](https://openweathermap.org/) in your
 
 ```properties
 open.weather.key=YOUR_OPEN_WEATHER_API_KEY
-open.weather.url=https://api.openweathermap.org/
 ```
 
-You can as well install the test APK provided in the root folder for testing purposes.
+
+You can as well install the [test APK](https://github.com/zakayothuku/dvt-hiweather/blob/main/hiweather-test.apk) provided in the root folder for testing purposes.
+
 
 ## Missing Features
 - Adding Favorite Locations & shows their Weather Forecast.
