@@ -39,9 +39,10 @@ plugins {
 
 android {
     buildTypes.forEach {
+        // TODO: Replace this with your own API Key
         it.buildConfigStringField(
             "OPEN_WEATHER_API_KEY",
-            System.getenv("OPEN_WEATHER_API_KEY") ?: getLocalProperty("open.weather.key")
+            System.getenv("OPEN_WEATHER_API_KEY") ?: "eb997eed3b84cc5f250bb4941de50de2" // getLocalProperty("open.weather.key")
         )
     }
 
