@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="favorite"
+            type="com.dvttest.hiweather.data.db.entities.Favorite" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/color_primary_variant"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/color_primary_variant"
+        app:cardCornerRadius="@dimen/keyline_4"
+        app:cardElevation="@dimen/zero"
+        app:cardUseCompatPadding="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/keyline_4">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?textAppearanceHeadline6"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:temperature="@{favorite.temp}"
+                tools:text="@tools:sample/us_zipcodes" />
+
+            <ImageView
+                android:layout_width="@dimen/keyline_5"
+                android:layout_height="@dimen/keyline_5"
+                android:contentDescription="@{favorite.weather}"
+                app:forecastIcon="@{favorite.weatherIcon}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_weather" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="@dimen/keyline_5"
+                android:layout_height="@dimen/keyline_5"
+                android:alpha="?alphaEmphasisMedium"
+                android:contentDescription="@{favorite.weather}"
+                android:src="@drawable/ic_location"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:visible="@{favorite.currentLocation}" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/keyline_2"
+                android:letterSpacing="0.1"
+                android:text="@{favorite.name}"
+                android:textAppearance="?textAppearanceBody2"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textView3"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@tools:sample/cities" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="?alphaEmphasisMedium"
+                android:letterSpacing="0.1"
+                android:text="@{favorite.address}"
+                android:textAppearance="?textAppearanceOverline"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@tools:sample/cities" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

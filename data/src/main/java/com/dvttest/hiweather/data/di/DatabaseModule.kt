@@ -18,6 +18,7 @@ package com.dvttest.hiweather.data.di
 import android.content.Context
 import androidx.room.Room
 import com.dvttest.hiweather.data.db.HiWeatherDatabase
+import com.dvttest.hiweather.data.db.dao.FavoritesDao
 import com.dvttest.hiweather.data.db.dao.WeatherDao
 import dagger.Module
 import dagger.Provides
@@ -40,5 +41,11 @@ object DatabaseModule {
     @Provides
     fun provideWeatherDao(database: HiWeatherDatabase): WeatherDao {
         return database.weatherDao
+    }
+
+    @Singleton
+    @Provides
+    fun provideFavoritesDao(database: HiWeatherDatabase): FavoritesDao {
+        return database.favoritesDao
     }
 }

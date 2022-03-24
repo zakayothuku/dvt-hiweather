@@ -17,13 +17,11 @@ package com.dvttest.hiweather.data
 
 import com.dvttest.hiweather.data.api.model.CurrentForecast
 import com.dvttest.hiweather.data.api.model.CurrentWeather
+import com.dvttest.hiweather.data.db.entities.Favorite
 import com.dvttest.hiweather.data.db.entities.Forecast
 import com.dvttest.hiweather.data.db.entities.Weather
-import com.dvttest.hiweather.data.models.UserLocation
 
 object FakeData {
-    val fakeUserLocation = UserLocation(latitude = 0.0, longitude = 0.0, refresh = false)
-
     val fakeWeather = Weather(
         id = null,
         weatherId = 0,
@@ -205,5 +203,50 @@ object FakeData {
         humidity = 504,
         date = "2022-02-01 09:04:22",
         day = "Friday"
+    )
+
+    val fakeFavoriteLocation1 = Favorite(
+        id = 1,
+        latitude = 0.0,
+        longitude = 0.0,
+        address = "Test1",
+        name = "Test1",
+        weather = "Cloudy",
+        weatherIcon = "",
+        temp = 10.0,
+        currentLocation = true
+    )
+    val fakeFavoriteLocation1Update = Favorite(
+        id = 1,
+        latitude = 0.0,
+        longitude = 0.0,
+        address = "Test2",
+        name = "Test2",
+        weather = "Sunny",
+        weatherIcon = "",
+        temp = 20.0,
+        currentLocation = true
+    )
+    val fakeFavoriteLocation2 = Favorite(
+        id = 2,
+        latitude = 0.0,
+        longitude = 0.0,
+        address = "Test1",
+        name = "Test1",
+        weather = "Cloudy",
+        weatherIcon = "029n",
+        temp = 20.0,
+        currentLocation = false
+    )
+    val fakeFavoriteLocation3 = Favorite(
+        id = 3,
+        latitude = 0.0,
+        longitude = 0.0,
+        address = "Test1",
+        name = "Test1",
+        weather = "Cloudy",
+        weatherIcon = "029n",
+        temp = 20.0,
+        currentLocation = false
     )
 }

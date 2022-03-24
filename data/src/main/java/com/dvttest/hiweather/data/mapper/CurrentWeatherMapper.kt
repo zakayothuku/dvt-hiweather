@@ -23,6 +23,7 @@ class CurrentWeatherMapper : BaseMapper<CurrentWeather, Weather> {
     override fun transformToDomain(type: CurrentWeather): Weather {
         return Weather(
             weather = type.weather.firstOrNull()?.main,
+            weatherIcon = type.weather.firstOrNull()?.icon,
             weatherId = type.weather.firstOrNull()?.id,
             addressName = type.name,
             country = type.sys.country,

@@ -20,6 +20,7 @@ fun DependencyHandler.addTestDependencies() {
     testImplementation(Dependencies.TestDependencies.roomTest)
     testImplementation(Dependencies.TestDependencies.coroutineTest)
     testImplementation(Dependencies.TestDependencies.archTesting)
+    testImplementation(Dependencies.TestDependencies.mockWebServer)
     testImplementation(Dependencies.TestDependencies.fragmentTest)
     androidTestImplementation(Dependencies.TestDependencies.fragmentTest)
 
@@ -31,6 +32,7 @@ fun DependencyHandler.addTestDependencies() {
     androidTestImplementation(Dependencies.TestDependencies.testRules)
     androidTestImplementation(Dependencies.TestDependencies.archTesting)
     androidTestImplementation(Dependencies.TestDependencies.coroutineTest)
+    androidTestImplementation(Dependencies.TestDependencies.workTest)
 
     androidTestImplementation(Dependencies.TestAndroidDependencies.hiltTesting)
 

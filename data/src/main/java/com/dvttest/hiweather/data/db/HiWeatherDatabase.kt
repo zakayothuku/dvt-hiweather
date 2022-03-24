@@ -17,15 +17,19 @@ package com.dvttest.hiweather.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.dvttest.hiweather.data.db.dao.FavoritesDao
 import com.dvttest.hiweather.data.db.dao.WeatherDao
+import com.dvttest.hiweather.data.db.entities.Favorite
 import com.dvttest.hiweather.data.db.entities.Forecast
 import com.dvttest.hiweather.data.db.entities.Weather
 
 @Database(
-    entities = [Weather::class, Forecast::class],
+    entities = [Weather::class, Forecast::class, Favorite::class],
     version = 1,
-    exportSchema = true
+    exportSchema = true,
+    autoMigrations = []
 )
 abstract class HiWeatherDatabase : RoomDatabase() {
     abstract val weatherDao: WeatherDao
+    abstract val favoritesDao: FavoritesDao
 }

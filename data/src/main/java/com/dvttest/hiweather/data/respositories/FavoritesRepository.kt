@@ -13,23 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.dvttest.hiweather.worker
+package com.dvttest.hiweather.data.respositories
 
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
+import com.dvttest.hiweather.data.db.entities.Favorite
+import kotlinx.coroutines.flow.Flow
 
-internal class UpdateWeatherWorkerTest {
-
-    @Before
-    fun setUp() {
-    }
-
-    @After
-    fun tearDown() {
-    }
-
-    @Test
-    fun doWork() {
-    }
+interface FavoritesRepository {
+    fun getLocations(): Flow<List<Favorite>>
+    suspend fun saveLocation(params: Favorite)
+    suspend fun updateLocation(params: Favorite): Any
+    suspend fun deleteLocations()
+    suspend fun deleteLocation(id: Int)
+    suspend fun deleteLocation(isCurrentWeather: Boolean)
 }

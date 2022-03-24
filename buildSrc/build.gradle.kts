@@ -28,8 +28,9 @@ repositories {
 object Plugins {
     const val gradle = "com.android.tools.build:gradle:7.1.1"
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
-    const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
+    const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1"
     const val hiltAndroid = "com.google.dagger:hilt-android-gradle-plugin:2.40.5"
+    const val secrets = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
 
     const val spotless = "com.diffplug.spotless:spotless-plugin-gradle:5.15.0"
     const val detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.18.1"
@@ -42,6 +43,7 @@ dependencies {
     implementation(Plugins.kotlin)
     implementation(Plugins.safeArgs)
     implementation(Plugins.hiltAndroid)
+    implementation(Plugins.secrets)
 
     implementation(Plugins.spotless)
     implementation(Plugins.detekt)
@@ -61,10 +63,6 @@ gradlePlugin {
     plugins.register("ktlint") {
         id = "ktlint"
         implementationClass = "plugins.PluginKtlint"
-    }
-    plugins.register("kover") {
-        id = "kover"
-        implementationClass = "plugins.PluginKover"
     }
     plugins.register("k-android-library") {
         id = "k-android-library"

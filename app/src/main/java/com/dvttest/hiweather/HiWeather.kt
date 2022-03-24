@@ -20,6 +20,7 @@ import android.util.Log
 import androidx.work.Configuration
 import androidx.work.DelegatingWorkerFactory
 import com.dvttest.hiweather.data.datastore.HiWeatherStore
+import com.dvttest.hiweather.data.respositories.FavoritesRepository
 import com.dvttest.hiweather.data.respositories.WeatherRepository
 import com.dvttest.hiweather.worker.HiWeatherWorkerFactory
 import dagger.hilt.android.HiltAndroidApp
@@ -32,15 +33,16 @@ class HiWeather : Application(), Configuration.Provider {
     @Inject
     lateinit var weatherRepository: WeatherRepository
 
+    @Inject
+    lateinit var favoritesRepository: FavoritesRepository
+
     override fun onCreate() {
         super.onCreate()
         HiWeatherStore.init(applicationContext)
         initTimberDebugTree()
     }
 
-    /**
-     * Initialize Timber debug tree.
-     */
+    /** Initialize Timber debug tree. */
     private fun initTimberDebugTree() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
@@ -49,7 +51,8 @@ class HiWeather : Application(), Configuration.Provider {
 
     override fun getWorkManagerConfiguration(): Configuration {
         val workerFactory = DelegatingWorkerFactory()
-        workerFactory.addFactory(HiWeatherWorkerFactory(weatherRepository))
+        workerFactory.addFactory(HiWeatherWorkerFactory(weatherRepository, favoritesRepository))
+
         return Configuration.Builder()
             .setMinimumLoggingLevel(Log.INFO)
             .setWorkerFactory(workerFactory)

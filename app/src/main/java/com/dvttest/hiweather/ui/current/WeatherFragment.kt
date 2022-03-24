@@ -22,6 +22,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
@@ -36,11 +38,12 @@ import com.dvttest.hiweather.databinding.FragmentWeatherBinding
 import com.dvttest.hiweather.ui.forecast.ForecastAdapter
 import com.dvttest.hiweather.worker.UpdateWeatherWorker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
-class WeatherFragment : BaseFragment<FragmentWeatherBinding>(R.layout.fragment_weather) {
+class WeatherFragment : BaseFragment<FragmentWeatherBinding>(layoutId = R.layout.fragment_weather) {
 
     private val viewModel: WeatherViewModel by viewModels()
     private val forecastAdapter by lazy { ForecastAdapter() }
@@ -51,8 +54,11 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>(R.layout.fragment_w
         locationPermissionRequest = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
             when {
                 permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) ||
-                    permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                    getCurrentLocationWeather(false)
+                    permissions.getOrDefault(
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        false
+                    ) -> {
+                    getCurrentLocationWeather()
                 }
                 else -> {
                     showLocationPermissionsDialog()
@@ -62,32 +68,47 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>(R.layout.fragment_w
     }
 
     override fun onInitDataBinding() {
+        setupToolbar()
         viewBinding.viewModel = viewModel
-        viewBinding.refresh.setOnRefreshListener { getCurrentLocationWeather(refresh = true) }
+        viewBinding.refresh.setOnRefreshListener { getCurrentLocationWeather() }
         viewBinding.weatherForecast.adapter = forecastAdapter
 
         observe(viewModel.loading) { loading ->
             viewBinding.refresh.isRefreshing = loading
         }
 
-        getCurrentLocationWeather(false)
+        getCurrentLocationWeather()
+    }
+
+    private fun setupToolbar() {
+        viewBinding.expandedToolbar.apply {
+            inflateMenu(R.menu.menu_main)
+            setOnMenuItemClickListener { menuItem ->
+                menuItem.onNavDestinationSelected(findNavController()) ||
+                    super.onOptionsItemSelected(menuItem)
+            }
+        }
     }
 
     private fun checkPermissionsGranted(): Boolean =
-        ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        ActivityCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
 
     /**
-     * Get current weather for Location.
-     * @param refresh Boolean to show if should refresh weather or not.
-     **/
-    private fun getCurrentLocationWeather(refresh: Boolean) {
+     * Get current weather for Location.*
+     */
+    private fun getCurrentLocationWeather() {
         if (checkPermissionsGranted()) {
             with(viewModel) {
                 fetchLocationLiveData().observeOnce(viewLifecycleOwner) { currentLocation ->
                     if (currentLocation != null) {
-                        HiWeatherStore.currentLocation = currentLocation.toString()
-                        currentLocation.refresh = refresh
+                        HiWeatherStore.currentLocation = Gson().toJson(currentLocation)
                         setupWeatherWorker()
                         getCurrentLocationWeather(currentLocation)
                     }

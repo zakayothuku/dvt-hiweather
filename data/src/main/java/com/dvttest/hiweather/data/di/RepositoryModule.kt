@@ -15,6 +15,8 @@
  */
 package com.dvttest.hiweather.data.di
 
+import com.dvttest.hiweather.data.respositories.FavoritesRepository
+import com.dvttest.hiweather.data.respositories.FavoritesRepositoryImpl
 import com.dvttest.hiweather.data.respositories.WeatherRepository
 import com.dvttest.hiweather.data.respositories.WeatherRepositoryImpl
 import dagger.Binds
@@ -30,4 +32,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindWeatherRepository(weatherRepositoryImpl: WeatherRepositoryImpl): WeatherRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindFavoritesRepository(favoritesRepositoryImpl: FavoritesRepositoryImpl): FavoritesRepository
 }

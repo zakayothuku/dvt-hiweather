@@ -13,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import extensions.getLocalProperty
+import extensions.buildConfigStringField
+
 plugins {
     id(Dependencies.Plugins.Android.application)
     kotlin(Dependencies.Plugins.Kotlin.android)
@@ -20,6 +23,7 @@ plugins {
     id(Dependencies.Plugins.Kotlin.parcelize)
     id(Dependencies.Plugins.safeArgsPlugin)
     id(Dependencies.Plugins.hiltAndroidPlugin)
+    id(Dependencies.Plugins.secretsPlugin)
 }
 
 android {
@@ -35,6 +39,14 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes.forEach {
+        // TODO: Replace this with your own API Key
+        it.buildConfigStringField(
+            "PLACES_API_KEY",
+            System.getenv("PLACES_API_KEY") ?: "AIzaSyAgFpG7EVZd5Ba8XvfUQENrhlJzpIldhc4" // getLocalProperty("places.api.key")
+        )
     }
 
     buildTypes {
@@ -142,6 +154,8 @@ dependencies {
     implementation(Dependencies.Coroutines.android)
 
     implementation(Dependencies.Play.location)
+    implementation(Dependencies.Play.maps)
+    implementation(Dependencies.Play.places)
 
     implementation(Dependencies.timber)
 
