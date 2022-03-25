@@ -24,40 +24,58 @@ plugins {
     id(`plugin-spotless`)
     id(`plugin-detekt`)
     id(`plugin-ktlint`)
-    id(`plugin-kover`)
-    jacoco
+    kover
 }
 
-// Credits: https://github.com/igorwojda/android-showcase/blob/master/build.gradle.kts
-task("staticCheck") {
-    description = """Mimics all static checks that run on CI.
-        Note that this task is intended to run locally (not on CI), because on CI we prefer to
-        have parallel execution and separate reports for each check (multiple statuses
-        eg. on github PR page).""".trimMargin()
+kover {
+    isDisabled = false
+    coverageEngine.set(kotlinx.kover.api.CoverageEngine.INTELLIJ)
+    intellijEngineVersion.set("1.0.656")
+    jacocoEngineVersion.set("0.8.7")
+    generateReportOnCheck = true
+    disabledProjects = setOf()
+    instrumentAndroidPackage = false
+    runAllTestsForProjectTask = false
+}
 
-    group = "verification"
-
-    afterEvaluate {
-        // Filter modules with "lintDebug" task (non-Android modules do not have lintDebug task)
-        val lintTasks = subprojects.mapNotNull { "${it.name}:lintDebug" }
-
-        // Get modules with "testDebugUnitTest" task (app module does not have it)
-        val testTasks = subprojects.mapNotNull { "${it.name}:testDebugUnitTest" }
-
-        // All task dependencies
-        val taskDependencies =
-            mutableListOf(
-                "app:assembleAndroidTest",
-                "ktlintCheck",
-                "detekt"
-            ).also {
-                it.addAll(lintTasks)
-                it.addAll(testTasks)
-            }
-
-        // By defining Gradle dependency all dependent tasks will run before this "empty" task
-        dependsOn(taskDependencies)
+tasks.withType<Test> {
+    useJUnitPlatform()
+    extensions.configure(kotlinx.kover.api.KoverTaskExtension::class) {
+        isDisabled = false
+        binaryReportFile.set(file("$buildDir/custom/result.bin"))
+        includes = listOf("com.*")
+        excludes = listOf()
     }
+}
+
+tasks.koverMergedHtmlReport {
+    isEnabled = true
+    htmlReportDir.set(layout.buildDirectory.dir("reports/kover/html"))
+    includes = listOf("com.*")
+    excludes = listOf()
+}
+
+tasks.koverVerify {
+    rule {
+        bound {
+            minValue = 100
+            maxValue = 100
+            valueType = kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
+        }
+    }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    testLogging {
+        events = setOf(FAILED, STARTED, PASSED, SKIPPED, STANDARD_OUT)
+        exceptionFormat = FULL
+        showExceptions = true
+        showCauses = true
+        showStackTraces = true
+    }
+
+    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
 }
 
 task("testAll") {
@@ -74,21 +92,4 @@ task("testAll") {
         }
         }"
     }
-}
-
-jacoco {
-    toolVersion = "0.8.7"
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
-    testLogging {
-        events = setOf(FAILED, STARTED, PASSED, SKIPPED, STANDARD_OUT)
-        exceptionFormat = FULL
-        showExceptions = true
-        showCauses = true
-        showStackTraces = true
-    }
-
-    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
 }

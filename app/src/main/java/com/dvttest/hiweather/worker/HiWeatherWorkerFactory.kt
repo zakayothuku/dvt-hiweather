@@ -19,10 +19,12 @@ import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
+import com.dvttest.hiweather.data.respositories.FavoritesRepository
 import com.dvttest.hiweather.data.respositories.WeatherRepository
 
 class HiWeatherWorkerFactory(
     private val weatherRepository: WeatherRepository,
+    private val favoritesRepository: FavoritesRepository,
 ) : WorkerFactory() {
 
     override fun createWorker(appContext: Context, workerClassName: String, workerParameters: WorkerParameters): ListenableWorker? {
@@ -31,7 +33,8 @@ class HiWeatherWorkerFactory(
                 UpdateWeatherWorker(
                     appContext,
                     workerParameters,
-                    weatherRepository
+                    weatherRepository,
+                    favoritesRepository
                 )
             }
             // Return null, so that the base class can delegate to the default WorkerFactory.

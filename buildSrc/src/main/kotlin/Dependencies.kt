@@ -25,6 +25,7 @@ object Dependencies {
 
         const val safeArgsPlugin = "androidx.navigation.safeargs.kotlin"
         const val hiltAndroidPlugin = "dagger.hilt.android.plugin"
+        const val secretsPlugin = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
     }
 
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
@@ -39,6 +40,7 @@ object Dependencies {
     const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     const val workManager = "androidx.work:work-runtime-ktx:2.7.1"
 
+    const val lottie = "com.airbnb.android:lottie:4.2.2"
     const val timber = "com.jakewharton.timber:timber:4.7.1"
 
     object Navigation {
@@ -107,6 +109,8 @@ object Dependencies {
     object Play {
 
         const val location = "com.google.android.gms:play-services-location:19.0.1"
+        const val maps = "com.google.maps.android:maps-ktx:3.2.1"
+        const val places = "com.google.maps.android:places-ktx:1.0.0"
     }
 
     object Glide {
@@ -144,8 +148,9 @@ object Dependencies {
 
         const val roomTest = "androidx.room:room-testing:2.3.0"
         const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0"
+        const val workTest = "androidx.work:work-testing:2.7.1"
         const val archTesting = "androidx.arch.core:core-testing:2.1.0"
         const val fragmentTest = "androidx.fragment:fragment-testing:1.4.0-alpha09"
-
+        const val mockWebServer = "com.squareup.okhttp3:mockwebserver:4.9.3"
     }
 }

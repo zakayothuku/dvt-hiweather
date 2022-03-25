@@ -19,7 +19,7 @@ import com.dvttest.hiweather.data.db.entities.Forecast
 import com.dvttest.hiweather.data.db.entities.Weather
 import com.dvttest.hiweather.data.models.UserLocation
 
-val fakeUserLocation = UserLocation(latitude = 0.0, longitude = 0.0, refresh = false)
+val fakeUserLocation = UserLocation(latitude = 0.0, longitude = 0.0)
 
 val fakeWeather = Weather(
     id = 1,

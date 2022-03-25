@@ -28,7 +28,9 @@ dependencies {
     implementation(Dependencies.splashscreen)
 
     implementation(Dependencies.Lifecycle.livedata)
+    implementation(Dependencies.Navigation.fragment)
 
+    implementation(Dependencies.lottie)
     implementation(Dependencies.Glide.core)
     kapt(Dependencies.Glide.compiler)
 }

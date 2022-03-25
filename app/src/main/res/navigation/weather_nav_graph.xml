@@ -2,13 +2,63 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/weather_nav_graph.xml"
-    app:startDestination="@id/weatherFragment">
+    android:id="@+id/weather_nav_graph"
+    app:startDestination="@id/currentWeather">
 
     <fragment
-        android:id="@+id/weatherFragment"
+        android:id="@+id/currentWeather"
         android:name="com.dvttest.hiweather.ui.current.WeatherFragment"
-        android:label="fragment_weather"
-        tools:layout="@layout/fragment_weather" />
+        android:label=""
+        tools:layout="@layout/fragment_weather">
+
+        <action
+            android:id="@+id/action_currentWeather_to_favorites"
+            app:destination="@id/favorites" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.dvttest.hiweather.ui.favorites.FavoritesFragment"
+        android:label="@string/saved_locations"
+        tools:layout="@layout/fragment_favorites">
+
+        <action
+            android:id="@+id/action_favorites_to_place_dialog"
+            app:destination="@id/place_dialog" />
+
+        <action
+            android:id="@+id/action_favorites_to_view_map"
+            app:destination="@id/view_map" />
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/place_dialog"
+        android:name="com.dvttest.hiweather.ui.favorites.FavoritePlaceDialog"
+        android:label="@string/add_city"
+        tools:layout="@layout/dialog_place">
+
+        <argument
+            android:name="place"
+            app:argType="com.dvttest.hiweather.data.db.entities.Favorite" />
+
+        <argument
+            android:name="isAdd"
+            app:argType="boolean" />
+
+    </dialog>
+
+    <fragment
+        android:id="@+id/view_map"
+        android:name="com.dvttest.hiweather.ui.map.ViewMapFragment"
+        android:label=""
+        tools:layout="@layout/fragment_view_map">
+
+        <argument
+            android:name="favoriteLocations"
+            app:argType="com.dvttest.hiweather.data.db.entities.Favorite[]" />
+
+    </fragment>
 
 </navigation>

@@ -47,9 +47,7 @@ class WeatherRepositoryImpl @Inject constructor(
                 )
             },
             saveFetchResponse = { response ->
-                if (userLocation.refresh) {
-                    weatherDao.deleteWeatherData()
-                }
+                weatherDao.deleteWeatherData()
                 weatherDao.saveCurrentLocationWeather(
                     weatherMapper.transformToDomain(response)
                 )
@@ -71,9 +69,7 @@ class WeatherRepositoryImpl @Inject constructor(
                 )
             },
             saveFetchResponse = { response ->
-                if (userLocation.refresh) {
-                    weatherDao.deleteForecastData()
-                }
+                weatherDao.deleteForecastData()
                 weatherDao.saveCurrentLocationForecast(
                     weatherMapper.transformToDomain(response)
                 )

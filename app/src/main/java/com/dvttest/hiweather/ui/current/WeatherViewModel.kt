@@ -28,6 +28,7 @@ import com.dvttest.hiweather.domain.usecases.LocationForecastUseCase
 import com.dvttest.hiweather.domain.usecases.LocationWeatherUseCase
 import com.dvttest.hiweather.util.LocationLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -35,7 +36,7 @@ import javax.inject.Inject
 @HiltViewModel
 class WeatherViewModel @Inject constructor(
     private val locationWeatherUseCase: LocationWeatherUseCase,
-    private val locationForecastUseCase: LocationForecastUseCase
+    private val locationForecastUseCase: LocationForecastUseCase,
 ) : ViewModel() {
 
     @Inject
@@ -100,5 +101,9 @@ class WeatherViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    suspend fun getFavoriteLocationWeather(savedLocation: UserLocation): Flow<State<Weather?>> {
+        return locationWeatherUseCase.invoke(savedLocation)
     }
 }

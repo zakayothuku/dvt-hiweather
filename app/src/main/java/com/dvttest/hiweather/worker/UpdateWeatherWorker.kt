@@ -16,47 +16,74 @@
 package com.dvttest.hiweather.worker
 
 import android.content.Context
+import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.dvttest.hiweather.data.api.State
 import com.dvttest.hiweather.data.datastore.HiWeatherStore
+import com.dvttest.hiweather.data.db.entities.Favorite
 import com.dvttest.hiweather.data.models.UserLocation
+import com.dvttest.hiweather.data.respositories.FavoritesRepository
 import com.dvttest.hiweather.data.respositories.WeatherRepository
+import com.google.gson.Gson
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.last
 
-class UpdateWeatherWorker(
-    context: Context,
-    workerParameters: WorkerParameters,
+@HiltWorker
+class UpdateWeatherWorker @AssistedInject constructor(
+    @Assisted context: Context,
+    @Assisted workerParameters: WorkerParameters,
     private val weatherRepository: WeatherRepository,
+    private val favoritesRepository: FavoritesRepository,
 ) : CoroutineWorker(context, workerParameters) {
 
     override suspend fun doWork(): Result {
-        val location = HiWeatherStore.currentLocation.split(",")
-        val userLocation = UserLocation(location[0].toDouble(), location[1].toDouble(), location[2].toBoolean())
+        var result: Result = Result.success()
+        val location = Gson().fromJson(HiWeatherStore.currentLocation, UserLocation::class.java)
+        val userLocation = UserLocation(location.latitude, location.longitude)
 
-        return when (val w = weatherRepository.getCurrentLocationWeather(userLocation).last()) {
-            is State.Success -> {
-                if (w.data != null) {
-                    when (val f = weatherRepository.getCurrentLocationForecast(userLocation).last()) {
-                        is State.Success -> {
-                            if (f.data != null) {
-                                Result.success()
-                            } else {
-                                Result.failure()
+        weatherRepository.getCurrentLocationWeather(userLocation).collect { weather ->
+            when (weather) {
+                is State.Success -> {
+                    if (weather.data != null) {
+                        favoritesRepository.deleteLocation(true)
+                        favoritesRepository.saveLocation(
+                            Favorite(
+                                latitude = userLocation.latitude,
+                                longitude = userLocation.longitude,
+                                address = "My Location",
+                                name = weather.data?.addressName!!,
+                                weather = weather.data?.weather,
+                                weatherIcon = weather.data?.weatherIcon,
+                                temp = weather.data?.temp,
+                                currentLocation = true
+                            )
+                        )
+
+                        weatherRepository.getCurrentLocationForecast(userLocation).collect { forecast ->
+                            result = when (forecast) {
+                                is State.Success -> {
+                                    if (forecast.data != null) {
+                                        Result.success()
+                                    } else {
+                                        Result.failure()
+                                    }
+                                }
+                                else -> {
+                                    Result.failure()
+                                }
                             }
                         }
-                        else -> {
-                            Result.failure()
-                        }
+                    } else {
+                        result = Result.failure()
                     }
-                } else {
-                    Result.failure()
+                }
+                else -> {
+                    result = Result.failure()
                 }
             }
-            else -> {
-                Result.failure()
-            }
         }
+        return result
     }
 }

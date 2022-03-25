@@ -18,6 +18,7 @@ package com.dvttest.hiweather.data.db.dao
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.dvttest.hiweather.data.FakeData.fakeDaoWeather
 import com.dvttest.hiweather.data.FakeData.fakeForecast
@@ -123,22 +124,6 @@ class WeatherDaoTest {
         val forecasts = weatherDao.getLastUpdatedForecast().first()
         assertThat(forecasts).isNotNull()
         assertThat(forecasts.count()).isNotEqualTo(0)
-        // for (index in forecasts.indices) {
-        //     assertThat(forecasts[index].id).isEqualTo(fakeForecastList[index-1].id)
-        //     assertThat(forecasts[index].country).isEqualTo(fakeForecastList[index-1].country)
-        //     assertThat(forecasts[index].lat).isEqualTo(fakeForecastList[index-1].lat)
-        //     assertThat(forecasts[index].lon).isEqualTo(fakeForecastList[index-1].lon)
-        //     assertThat(forecasts[index].weather).isEqualTo(fakeForecastList[index-1].weather)
-        //     assertThat(forecasts[index].weatherId).isEqualTo(fakeForecastList[index-1].weatherId)
-        //     assertThat(forecasts[index].weatherIcon).isEqualTo(fakeForecastList[index-1].weatherIcon)
-        //     assertThat(forecasts[index].temp).isEqualTo(fakeForecastList[index-1].temp)
-        //     assertThat(forecasts[index].tempMin).isEqualTo(fakeForecastList[index-1].tempMin)
-        //     assertThat(forecasts[index].tempMax).isEqualTo(fakeForecastList[index-1].tempMax)
-        //     assertThat(forecasts[index].pressure).isEqualTo(fakeForecastList[index-1].pressure)
-        //     assertThat(forecasts[index].humidity).isEqualTo(fakeForecastList[index-1].humidity)
-        //     assertThat(forecasts[index].date).isEqualTo(fakeForecastList[index-1].date)
-        //     assertThat(forecasts[index].day).isEqualTo(fakeForecastList[index-1].day)
-        // }
     }
 
     @Test

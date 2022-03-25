@@ -25,6 +25,7 @@ data class Weather(
     @ColumnInfo(name = "id") var id: Int? = null,
     @ColumnInfo(name = "weather_id") var weatherId: Int? = null,
     @ColumnInfo(name = "weather") var weather: String? = null,
+    @ColumnInfo(name = "weather_icon") var weatherIcon: String? = null,
     @ColumnInfo(name = "address_name") var addressName: String? = null,
     @ColumnInfo(name = "country") var country: String? = null,
     @ColumnInfo(name = "lat") val lat: Double? = null,

@@ -16,8 +16,8 @@
 
 <resources>
 
-    <color name="color_primary">#F7F7F7</color>
-    <color name="color_primary_variant">#00F7F7F7</color>
+    <color name="color_primary">#535977</color>
+    <color name="color_primary_variant">#33D8DADE</color>
     <color name="color_secondary">#F7F7F7</color>
     <color name="color_accent">#47AB2F</color>
 
@@ -25,8 +25,8 @@
     <color name="color_cloudy">#54717A</color>
     <color name="color_rainy">#57575D</color>
 
-    <color name="color_background">#39393e</color>
-    <color name="color_surface">#39393e</color>
+    <color name="color_background">#59607B</color>
+    <color name="color_surface">#D8DADE</color>
     <color name="color_dialog_background">#FFFFFF</color>
 
     <color name="color_success">#00AC6A</color>

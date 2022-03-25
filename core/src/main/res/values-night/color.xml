@@ -16,9 +16,9 @@
 
 <resources>
 
-    <color name="color_primary">#666666</color>
-    <color name="color_primary_variant">#00666666</color>
-    <color name="color_secondary">#666666</color>
+    <color name="color_primary">#535977</color>
+    <color name="color_primary_variant">#16D8DADE</color>
+    <color name="color_secondary">#212121</color>
     <color name="color_accent">#318b1b</color>
 
     <color name="color_sunny">#368B1C</color>

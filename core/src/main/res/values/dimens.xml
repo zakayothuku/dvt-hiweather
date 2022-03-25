@@ -61,6 +61,8 @@
     <dimen name="text_size_header2">60sp</dimen>
     <dimen name="text_size_header1">96sp</dimen>
 
+    <dimen name="empty_state_size">144dp</dimen>
+
     <!--Emphasis modifiers for "on" colors-->
     <dimen name="alpha_emphasis_high">@dimen/material_emphasis_high_type</dimen>
     <dimen name="alpha_emphasis_medium">@dimen/material_emphasis_medium</dimen>
